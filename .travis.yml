@@ -22,3 +22,15 @@ after_success:
   - docker push duizer/multi-client
   - docker push duizer/multi-server
   - docker push duizer/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "Multidocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-495563212072"
+  bucket_path: "udemy-docker-multi"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
